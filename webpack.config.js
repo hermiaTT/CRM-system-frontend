@@ -28,6 +28,10 @@ module.exports = {
         test: /\.(sass|less|css)$/,
         use: ["style-loader", "css-loader", 'sass-loader'],
       },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: 'asset/resource',
+      },
     ]
   },
   devServer: {
@@ -35,6 +39,7 @@ module.exports = {
     open: true,
     static: path.join(__dirname, 'public'), // Webpack 5 uses 'static' instead of 'contentBase'
     watchFiles: ['src/**/*', 'public/**/*'], // Use 'watchFiles' to watch specific files or directories
+    historyApiFallback: { index: "/", disableDotRule: true },
   },
   devtool: 'eval-source-map',
   resolve: {

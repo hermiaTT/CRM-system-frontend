@@ -1,25 +1,27 @@
+import React from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Dashboard from './view/Dashboard';
+import Footer from './components/Footer';
 import './App.css';
-import React, { useEffect, useState } from 'react';
-import api from './api/axiosConfig';
+import NavPanel from './components/NavPanel';
+import Customers from './view/Customers';
+import Gallery from './view/Gallery';
+import Employees from './view/Employees';
+import Schedule from './view/Schedule';
 
-function App(){
-    const[customers, setCustomers] = useState();
-
-    const getCustomers = async()=>{
-        try{
-            const response = await api.get("/api/v1/customers");
-            console.log(response.data);
-            setCustomers(response.data);
-
-        }catch(e){
-            console.error(e);
-        }
-    }
-    useEffect(()=>{
-        getCustomers();
-    },[])
-    return(
-        <div>hedddllo</div>
+function App() {
+    return (
+        <BrowserRouter>
+            <NavPanel>
+                <Routes>
+                    <Route path="/" exact element={<Dashboard />} />
+                    <Route path="/customers" exact element={<Customers />} />
+                    <Route path="/services" exact element={<Gallery />} />
+                    <Route path="/employees" exact element={<Employees />} />
+                    <Route path="/employees/schedule" exact element={<Schedule />} />
+                </Routes>
+            </NavPanel>
+        </BrowserRouter>
     );
 }
 
