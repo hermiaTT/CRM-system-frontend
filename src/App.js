@@ -1,8 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Dashboard from './view/Dashboard';
-import Footer from './components/Footer';
 import './App.css';
+import Dashboard from './view/Dashboard';
 import NavPanel from './components/NavPanel';
 import Customers from './view/Customers';
 import Gallery from './view/Gallery';
@@ -22,6 +21,7 @@ function App() {
                 </Routes>
             </NavPanel>
         </BrowserRouter>
+    
     );
 }
 
