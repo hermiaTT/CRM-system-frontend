@@ -1,21 +1,27 @@
-import React from 'react'
+import React, { createContext } from 'react'
 import { useState, useEffect } from 'react';
-import  { getAllEmployees } from "../api";
 import Table from '../components/Table';
-const Employees = () => {
-    const[customers, setCustomers] = useState();
+import useEmployees from '../store/context/EmployeesContext';
 
-    const  getCustomers =async()=>{
-        const data = await getAllEmployees();
-        setCustomers(data);   
-    }
-    useEffect(()=>{
-        getCustomers();
-    },[])
+
+const Employees = () => {
+  const { employees, loading, error, getAllEmployees} = useEmployees();
+
+  useEffect(() => {
+    getAllEmployees();
+  }, []);
+
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>Error: {error}</p>;
+
+
+
   return (
     <div>
-        {/* <h2 className='text-center'>Employees</h2> */}
-        <Table data = {customers}/>
+        
+        <Table data={employees}/>
+    
+        
     </div>
   )
 }

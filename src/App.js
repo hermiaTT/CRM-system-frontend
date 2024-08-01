@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Dashboard from './view/Dashboard';
 import NavPanel from './components/NavPanel';
-import Customers from './view/Customers';
+import Customers from './view/customers/Customers';
 import Gallery from './view/Gallery';
 import Employees from './view/Employees';
 import Schedule from './view/Schedule';

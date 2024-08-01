@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { EmployeesContext } from '../view/Employees';
 
 const DataRow = ({ item }) => (
     <tr>
@@ -17,6 +18,7 @@ const DataRow = ({ item }) => (
     </tr>
   );
 const Table = ({data}) => {
+
     const headers = data && data.length > 0 ? Object.keys(data[0]).flatMap(key => (
         typeof data[0][key] === 'object' && data[0][key] !== null ? Object.keys(data[0][key]) : key
       )) : [];

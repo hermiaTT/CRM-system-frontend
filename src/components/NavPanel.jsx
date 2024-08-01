@@ -135,7 +135,7 @@ const NavPanel = ({ children }) => {
         </List>
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        <DrawerHeader />
+        <DrawerHeader /> 
         {children}
       </Box>
       
