@@ -10,68 +10,46 @@ const servicesUrl = baseUrl + "/services";
 export const getAllEmployeesResponse = ()=>{
     return axios.get(employeesUrl,{
             headers:headers
-            })
-            .then((response)=>{
-                if(response.status === 200){
-                    return response.data;
-                }
-            }).catch((e)=>{
-                console.error(e);
-                return {errors: e.message};
-            })
-
-            
+        }) .then((response)=>{
+            return response;
+        }).catch((e)=>{
+            console.error(e);
+            return {errors: e.message};
+        })       
 }
 
 export const getAllCustomersResponse = () =>{
     return axios.get(customersUrl, {
-        headers: headers
-    }).then((response)=>{
-        if(response.status === 200){
-            return response.data;
-        }
-    }).catch((e)=>{
-        console.error(e);
-        return {errors: e.message};
-    })
+            headers: headers
+        }).then((response)=>{
+            return response;  
+        }).catch((e)=>{
+            console.error(e);
+            return {errors: e.message};
+        })
 }
 
-// export const submitNewCustomerResponse = async (data) => {
-//     try {
-//         const response = await fetch(customersUrl, {
-//             method: 'POST',
-//             headers: {
-//                 'Content-Type': 'application/json'
-//             },
-//             body: JSON.stringify(data)
-//         });
 
-//         if (response.ok) {
-//             const responseData = await response.json();
-//             return responseData;
-//         } else {
-//             const errorData = await response.json();
-//             console.error('Error response:', errorData);
-//             return { errors: response.statusText };
-//         }
-//     } catch (error) {
-//         console.error('Fetch error:', error);
-//         return { errors: error.message };
-//     }
-// }
 export const submitNewCustomerResponse =  (data) => {
-        return axios.post(customersUrl, data).then((response)=>{
-            if(response.status === 201){
-                return response.data;
-            }
-            else{
-                return {errors: response.error}
-            }
+        return axios.post(customersUrl, data).then((response)=>{       
+            return response;
         }).catch((e)=>{
             console.error(e);
             return {errors: e.message};
         })
       
+}
+
+
+export const deleteCurrentCustomerResponse = (id)=>{
+    //no header needed for now, check when auth is required
+    let deleteUrl = customersUrl+ "/delete/"+ id;
+    return axios.delete(deleteUrl).then((response)=>{
+        return response;
+    }).catch(e=>{
+        console.error(e);
+        return {errors: e.message};
+    })
 }
 
 export default axios.create({

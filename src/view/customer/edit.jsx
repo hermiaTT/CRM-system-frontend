@@ -9,7 +9,7 @@ import * as yup from 'yup';
 import Select from '../../components/Select';
 import useCustomer from '../../store/context/CustomerContext';
 
-const Edit = forwardRef( ({ onCustomerAdded },ref) => {
+const Edit = forwardRef( ({  },ref) => {
     const { Formik } = formik;
     const {customer, loading, error, submitNewCustomer} = useCustomer();
 
@@ -30,7 +30,7 @@ const Edit = forwardRef( ({ onCustomerAdded },ref) => {
     const initialValues = customer;
     const onFormSubmit = (values)=>{
         submitNewCustomer({data: values});
-        onCustomerAdded();
+       
     }
 
     return (

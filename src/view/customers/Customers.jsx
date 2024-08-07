@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import useCustomers from '../../store/context/CustomersContext';
 import DataTable from '../../components/DataTable';
 import { Box } from '@mui/material';
-import Form from 'react-bootstrap/Form';
 import AddCustomerModal from '../../components/AddCustomerModal';
 import Edit from '../customer/edit';
 import useCustomer from '../../store/context/CustomerContext';
@@ -10,22 +8,11 @@ import useCustomer from '../../store/context/CustomerContext';
 
 
  const Customers = ()=> {
-    const { customers, loading, error, tableColumn, getAllCustomers } = useCustomers();
-    const { dispatch, showModal } = useCustomer();
-    const [isUpdated, setIsUpdated] = useState(false);
-
-
+    const { customers, tableColumn, showModal, dispatch , getAllCustomers, deleteCurrentCustomer } = useCustomer();
+   
     useEffect(()=>{
       getAllCustomers();
     },[])
-
-    useEffect(()=>{
-      if(isUpdated){
-        getAllCustomers();
-        setIsUpdated(false);
-      }
-    },[isUpdated])
-
 
     const onOpen = ()=>{
       dispatch({ type: "OPEN_MODAL" });
@@ -36,9 +23,14 @@ import useCustomer from '../../store/context/CustomerContext';
     }
     
     const onDeleteCustomer = (data)=> {
-      console.log(data)
-      
+      deleteCurrentCustomer(data);   
     }
+    
+    const onEditCustomer = (value) => {
+      dispatch({ type: "OPEN_EDIT_CUSTOMER", payload:{ customer: value} });
+      console.log(value);
+    }
+
     return (
       <Box >
         <DataTable 
@@ -46,14 +38,15 @@ import useCustomer from '../../store/context/CustomerContext';
           columns={tableColumn} 
           header = {'Customer List'}
           onAdd = {onOpen}
-          onDelete = {onDeleteCustomer}/>
+          onDelete = {onDeleteCustomer}
+          onEdit = {onEditCustomer}/>
 
         <AddCustomerModal
           show ={showModal}
           onClose={onClose}
           onSubmit={onOpen}
         >
-          <Edit onCustomerAdded={() => setIsUpdated(true)}/>
+          <Edit />
         </AddCustomerModal>
           
         

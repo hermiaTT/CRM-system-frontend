@@ -2,7 +2,7 @@
 export const initialState = {
     employees: [],
     loading: false,
-    error: null,
+    errors: null,
     tableColumn: [
         { id: "id", label: "Id", numeric: true, disablePadding: false },
         { id: "firstName", label: "First Name", numeric: false, disablePadding: false },

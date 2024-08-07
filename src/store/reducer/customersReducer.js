@@ -1,8 +1,6 @@
-
+//about to delete
 export const initialState = {
     customers: [],
-    loading:false,
-    error: null,
     tableColumn:[
         { id: "id", label: "Id", numeric: true, disablePadding: true },
         { id: "fullName", label: "Customer Name", numeric: false, disablePadding: false },
@@ -19,7 +17,22 @@ export const initialState = {
             }
         },
         { id: "note", label: "note", numeric: false, disablePadding: false },
-    ]
+    ],
+    customer: {
+        firstName: "",
+        lastName: "",
+        phoneNumber: "",
+        isVip: false,
+        vipType: "",
+        balance: 0,
+        firstLanguage: "Madrian",
+        comingResource: "",
+        birthday: "",
+        note: "",
+    },
+    showModal: false,
+    loading:false,
+    error: null,
 };
 
 const customersReducer = (state, action) => {

@@ -8,21 +8,16 @@ export const EmployeesProvider = ({ children }) => {
   const [state, dispatch] = useReducer(employeesReducer, initialState);
 
   const getAllEmployees = async () => {
-    try {
-      const data = await getAllEmployeesResponse();
-      data && data.map(item=>{
+
+    const response = await getAllEmployeesResponse();
+    if (response && response.data && response.status === 200){
+      response.data.map(item=>{
         let fullName = item.firstName + " "+item.lastName;
         item.fullName = fullName
       })
-      dispatch({
-        type: "GET_EMPLOYEES_SUCCESS",
-        payload: data
-      });
-    } catch (error) {
-      dispatch({
-        type: "GET_EMPLOYEES_FAILURE",
-        payload: error.message
-      });
+      dispatch({ type: "GET_EMPLOYEES_SUCCESS", payload: response.data });
+    }else {
+      dispatch({ type: "GET_EMPLOYEES_FAILURE", errors: response.errors});
     }
   };
 

@@ -1,4 +1,4 @@
-import { Collections, EventNote, Face3, PeopleAlt, SpaceDashboard } from "@mui/icons-material";
+import { Collections, EventNote, Face3, FilterVintage, PeopleAlt, SpaceDashboard } from "@mui/icons-material";
 import React from 'react';
 export const resources ={
     navbarHeaderUpper: [
@@ -13,9 +13,14 @@ export const resources ={
             href: '/customers'
         },
         {
+            value: 'Services',
+            icon: <FilterVintage/>,
+            href: '/services'
+        },
+        {
             value: 'Gallery',
             icon: <Collections/>,
-            href: '/services'
+            href: '/gallery'
         }
     ],
     navbarHeaderBottom: [

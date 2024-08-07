@@ -29,7 +29,6 @@ const AddCustomerModal = ({ show, onClose, children }) => {
             if (formikRef.current) {
               formikRef.current.handleSubmit(); // Using submitForm instead of handleSubmit
             }
-            // onClose();
           }}
         >
           Save Changes

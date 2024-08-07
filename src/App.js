@@ -7,6 +7,7 @@ import Customers from './view/customers/Customers';
 import Gallery from './view/Gallery';
 import Employees from './view/Employees';
 import Schedule from './view/Schedule';
+import Services from './view/Services';
 
 function App() {
     return (
@@ -15,7 +16,8 @@ function App() {
                 <Routes>
                     <Route path="/" exact element={<Dashboard />} />
                     <Route path="/customers" exact element={<Customers />} />
-                    <Route path="/services" exact element={<Gallery />} />
+                    <Route path="/services" exact element={<Services />} />
+                    <Route path="/gallery" exact element={<Gallery />} />
                     <Route path="/employees" exact element={<Employees />} />
                     <Route path="/employees/schedule" exact element={<Schedule />} />
                 </Routes>
