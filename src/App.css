@@ -4,7 +4,21 @@
     --secondary-text-color: #999797;
 }
 
+.table-actions-cell{
+    visibility: hidden;
+}
 
+.css-10cbwbc-MuiTableRow-root.MuiTableRow-hover:hover .table-actions-cell{
+    visibility:visible;
+}
+
+.css-15wwp11-MuiTableHead-root{
+    border-bottom: 1px solid rgba(224, 224, 224, 1);
+}
+
+.MuiAutocomplete-root{
+    width: 20%;
+}
 .footer{
     position: absolute;
     bottom: 0;
@@ -13,4 +27,4 @@
     background-color: var(--background-color);
     text-align: center;
     color: var(--secondary-text-color);
-}
+} 

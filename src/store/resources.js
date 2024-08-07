@@ -30,7 +30,10 @@ export const resources ={
             href: '/employees/schedule'
         },
 
-    ]
+    ],
+    vipType: ["group purchase", "VIP 1000", "VIP 3000", "VIP 5000"],
+    firstLanguage: ["English", "Madrian", "Catonese"],
+    comingResource: ["小红书", "朋友推荐", "电话", "Walk In", "Other"]
 
     
 }

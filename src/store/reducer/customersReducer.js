@@ -1,7 +1,25 @@
+
 export const initialState = {
     customers: [],
     loading:false,
     error: null,
+    tableColumn:[
+        { id: "id", label: "Id", numeric: true, disablePadding: true },
+        { id: "fullName", label: "Customer Name", numeric: false, disablePadding: false },
+        { id: "phoneNumber", label: "Phone Number", numeric: false, disablePadding: false },
+        { id: "vipType", label: "VIP Type", numeric: false, disablePadding: false },
+        { id: "balance", label: "Balance", numeric: true, disablePadding: false },
+        { id: "firstLanguage", label: "First Language", numeric: false, disablePadding: false },
+        { id: "comingResource", label: "Visit Resource", numeric: false, disablePadding: false },
+        { id: "birthday", label: "Birth Day", numeric: false, disablePadding: false,
+            renderCell: (params) => {
+                const date = new Date(params.value);
+                const formattedDate = date.toISOString().split('T')[0];
+                return formattedDate;
+            }
+        },
+        { id: "note", label: "note", numeric: false, disablePadding: false },
+    ]
 };
 
 const customersReducer = (state, action) => {

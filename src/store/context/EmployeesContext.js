@@ -10,6 +10,10 @@ export const EmployeesProvider = ({ children }) => {
   const getAllEmployees = async () => {
     try {
       const data = await getAllEmployeesResponse();
+      data && data.map(item=>{
+        let fullName = item.firstName + " "+item.lastName;
+        item.fullName = fullName
+      })
       dispatch({
         type: "GET_EMPLOYEES_SUCCESS",
         payload: data

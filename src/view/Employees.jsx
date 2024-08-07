@@ -1,11 +1,11 @@
 import React, { createContext } from 'react'
 import { useState, useEffect } from 'react';
-import Table from '../components/Table';
+import DataTable from '../components/DataTable';
 import useEmployees from '../store/context/EmployeesContext';
 
 
 const Employees = () => {
-  const { employees, loading, error, getAllEmployees} = useEmployees();
+  const { employees, loading, error, tableColumn, getAllEmployees} = useEmployees();
 
   useEffect(() => {
     getAllEmployees();
@@ -19,7 +19,7 @@ const Employees = () => {
   return (
     <div>
         
-        <Table data={employees}/>
+        <DataTable columns={tableColumn} rows={employees} header = {'Employees List'} />
     
         
     </div>

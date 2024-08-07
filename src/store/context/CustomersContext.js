@@ -11,20 +11,16 @@ export const CustomersProvider = ({children}) => {
         try{
             const data = await getAllCustomersResponse();
 
-            const formattedData = data && data.map(item=>{
-                const formattedItem = {};
-                for(const [key, formatter] of Object.entries(customerKeys)){
-                    formattedItem[key] = key === 'pastServices'
-                    ? formatter(item) 
-                    : formatter(item);
-                }
-                return formattedItem;
+            data && data.map(item=>{
+                let fullName = item.firstName + " "+item.lastName;
+                item.fullName = fullName
+
             })
 
 
             dispatch({
                 type: "GET_CUSTOMERS_SUCCESS",
-                payload: formattedData
+                payload: data
             });
             
         } catch (error){
