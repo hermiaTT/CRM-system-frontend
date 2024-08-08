@@ -4,6 +4,10 @@
     --secondary-text-color: #999797;
 }
 
+.MuiBox-root .css-nz47g-MuiPaper-root-MuiAppBar-root{
+    background-color: #70869d;
+}
+
 .table-actions-cell{
     visibility: hidden;
 }

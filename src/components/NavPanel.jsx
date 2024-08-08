@@ -75,7 +75,7 @@ const NavPanel = ({ children }) => {
     setCurrentPageHeader(data.value);
   }
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: 'flex', minHeight: '100vh' }}>
       <CssBaseline />
       <Header onClick={() => setOpen(!open)} open = {open}/>
       <Drawer 
@@ -134,7 +134,7 @@ const NavPanel = ({ children }) => {
           ))}
         </List>
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+      <Box component="main" sx={{ flexGrow: 1, p: 3, backgroundColor: '#e3d2b78a' }}>
         <DrawerHeader /> 
         {children}
       </Box>

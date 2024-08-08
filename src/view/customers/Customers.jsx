@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import DataTable from '../../components/DataTable';
 import { Box } from '@mui/material';
-import AddCustomerModal from '../../components/AddCustomerModal';
+import AddCustomerModal from '../../components/Modal';
 import Edit from '../customer/edit';
 import useCustomer from '../../store/context/CustomerContext';
 
