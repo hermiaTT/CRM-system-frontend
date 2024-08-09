@@ -30,7 +30,7 @@ export const getAllCustomersResponse = () =>{
 }
 
 
-export const submitNewCustomerResponse =  (data) => {
+export const submitCustomerResponse =  (data) => {
         return axios.post(customersUrl, data).then((response)=>{       
             return response;
         }).catch((e)=>{

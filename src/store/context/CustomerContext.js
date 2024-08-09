@@ -1,29 +1,40 @@
 import React, { createContext, useContext, useReducer } from 'react';
 import { initialState } from '../reducer/customerReducer';
 import customerReducer from '../reducer/customerReducer';
-import {deleteCurrentCustomerResponse, getAllCustomersResponse, submitNewCustomerResponse } from '../../api';
+import {deleteCurrentCustomerResponse, getAllCustomersResponse, submitCustomerResponse } from '../../api';
+import { formatDateEpoch, formateDate } from '../../util';
 
 const CustomerContext = createContext(initialState);
 
 export const CustomerProvider = ({children}) => {
     const[state, dispatch] = useReducer(customerReducer, initialState);
+
+    const formateData = (customers) => {
+        customers.forEach(customer => {
+            let fullName = customer.firstName + " "+customer.lastName;
+            customer.fullName = fullName;
+            customer.birthday = formateDate(customer.birthday);
+        });
+    }
     
     //get all customers
     const getAllCustomers = async () => {
         const response = await getAllCustomersResponse();
         if (response && response.data && response.status === 200){
-            response.data.forEach(item=>{
-                let fullName = item.firstName + " "+item.lastName;
-                item.fullName = fullName;
-            })
+            let data = response.data;
+            formateData(data);
+
             dispatch({type: "GET_CUSTOMERS_SUCCESS", payload: response.data});
         }else{
             dispatch({ type: "GET_CUSTOMERS_FAILURE", errors: response.errors});       
         }
     }
 
-    const submitNewCustomer =async(data)=>{
-        const response = await submitNewCustomerResponse(data);
+    const submitCustomer =async(data)=>{
+        if(data.data && data.data.birthday){
+            data.data.birthday = formatDateEpoch(data.data.birthday);
+        }
+        const response = await submitCustomerResponse(data);
         if (response && response.data && response.status === 201){
             getAllCustomers();
             // dispatch({ type: "SUBMIT_CUSTOMER_SUCCESS", payload: response.data })
@@ -51,7 +62,7 @@ export const CustomerProvider = ({children}) => {
     const contextValue = {
         ...state,
         dispatch,
-        submitNewCustomer,
+        submitCustomer,
         getAllCustomers,
         deleteCurrentCustomer
        

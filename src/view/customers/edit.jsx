@@ -11,7 +11,7 @@ import useCustomer from '../../store/context/CustomerContext';
 
 const Edit = forwardRef( ({  },ref) => {
     const { Formik } = formik;
-    const {customer, loading, error, submitNewCustomer} = useCustomer();
+    const {customer, loading, error, submitCustomer} = useCustomer();
 
     const schema = yup.object().shape({
         firstName: yup.string().required(),
@@ -29,7 +29,7 @@ const Edit = forwardRef( ({  },ref) => {
 
     const initialValues = customer;
     const onFormSubmit = (values)=>{
-        submitNewCustomer({data: values});
+        submitCustomer({data: values});
        
     }
 

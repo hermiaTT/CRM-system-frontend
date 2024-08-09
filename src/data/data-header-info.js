@@ -6,13 +6,7 @@ export const customersTableColumn = [
     { id: "balance", label: "Balance", numeric: true, disablePadding: false },
     { id: "firstLanguage", label: "First Language", numeric: false, disablePadding: false },
     { id: "comingResource", label: "Visit Resource", numeric: false, disablePadding: false },
-    { id: "birthday", label: "Birth Day", numeric: false, disablePadding: false,
-        renderCell: (params) => {
-            const date = new Date(params.value);
-            const formattedDate = date.toISOString().split('T')[0];
-            return formattedDate;
-        }
-    },
+    { id: "birthday", label: "Birth Day", numeric: false, disablePadding: false},
     { id: "note", label: "note", numeric: false, disablePadding: false },
 ];
 
