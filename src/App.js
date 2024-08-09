@@ -7,7 +7,7 @@ import Customers from './view/customers/Customers';
 import Gallery from './view/Gallery';
 import Employees from './view/Employees';
 import Schedule from './view/Schedule';
-import Services from './view/Services';
+import Services from './view/services/Services';
 
 function App() {
     return (

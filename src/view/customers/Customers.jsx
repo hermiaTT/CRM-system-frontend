@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import DataTable from '../../components/DataTable';
 import { Box } from '@mui/material';
-import AddCustomerModal from '../../components/Modal';
-import Edit from '../customer/edit';
+import DataModal from '../../components/Modal';
 import useCustomer from '../../store/context/CustomerContext';
-
+import { customersTableColumn } from '../../data/data-header-info';
+import Edit from './edit.jsx';
 
 
  const Customers = ()=> {
-    const { customers, tableColumn, showModal, dispatch , getAllCustomers, deleteCurrentCustomer } = useCustomer();
-   
+    const { customers, showModal, dispatch , getAllCustomers, deleteCurrentCustomer } = useCustomer();
+    const tableColumn = customersTableColumn;
     useEffect(()=>{
       getAllCustomers();
     },[])
@@ -35,19 +35,19 @@ import useCustomer from '../../store/context/CustomerContext';
       <Box >
         <DataTable 
           rows = {customers} 
-          columns={tableColumn} 
           header = {'Customer List'}
           onAdd = {onOpen}
+          columns = {tableColumn}
           onDelete = {onDeleteCustomer}
           onEdit = {onEditCustomer}/>
 
-        <AddCustomerModal
+        <DataModal
           show ={showModal}
           onClose={onClose}
           onSubmit={onOpen}
         >
           <Edit />
-        </AddCustomerModal>
+        </DataModal>
           
         
         </Box>

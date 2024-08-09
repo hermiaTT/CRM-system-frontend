@@ -1,14 +1,17 @@
 import React from 'react'
-import { EmployeesProvider } from './context/EmployeesContext'
+import { EmployeeProvider } from './context/EmployeeContext'
 import { CustomerProvider } from './context/CustomerContext'
+import { ServiceProvider } from './context/ServiceContext'
 
 const AppProvider = ({children}) => {
   return (
-        <EmployeesProvider>
+        <EmployeeProvider>
           <CustomerProvider>
-            {children}
+            <ServiceProvider>
+              {children}
+            </ServiceProvider>
           </CustomerProvider>
-        </EmployeesProvider>
+        </EmployeeProvider>
   )
 }
 

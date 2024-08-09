@@ -1,12 +1,14 @@
 import React, { createContext } from 'react'
 import { useState, useEffect } from 'react';
 import DataTable from '../components/DataTable';
-import useEmployees from '../store/context/EmployeesContext';
+import useEmployee from '../store/context/EmployeeContext';
+import { employeesTableColumn } from '../data/data-header-info';
+import { Box } from '@mui/material';
 
 
 const Employees = () => {
-  const { employees, loading, error, tableColumn, getAllEmployees} = useEmployees();
-
+  const { employees, loading, error, getAllEmployees} = useEmployee();
+  const tableColumn = employeesTableColumn;
   useEffect(() => {
     getAllEmployees();
   }, []);
@@ -17,12 +19,9 @@ const Employees = () => {
 
 
   return (
-    <div>
-        
-        <DataTable columns={tableColumn} rows={employees} header = {'Employees List'} />
-    
-        
-    </div>
+    <Box>   
+        <DataTable columns={tableColumn} rows={employees} header = {'Employees List'} />  
+    </Box>
   )
 }
 

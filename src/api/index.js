@@ -52,6 +52,17 @@ export const deleteCurrentCustomerResponse = (id)=>{
     })
 }
 
+export const getAllServicessResponse = () =>{
+    return axios.get(servicesUrl, {
+            headers: headers
+        }).then((response)=>{
+            return response;  
+        }).catch((e)=>{
+            console.error(e);
+            return {errors: e.message};
+        })
+}
+
 export default axios.create({
     baseURL: baseUrl,
     headers: headers,

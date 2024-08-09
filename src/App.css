@@ -12,7 +12,7 @@
     visibility: hidden;
 }
 
-.css-10cbwbc-MuiTableRow-root.MuiTableRow-hover:hover .table-actions-cell{
+.MuiTableRow-root:hover .table-actions-cell{
     visibility:visible;
 }
 

@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
-const AddCustomerModal = ({ show, onClose, children }) => {
+const DataModal = ({ show, onClose, children }) => {
   const formikRef = useRef();
 
   return (
@@ -38,4 +38,4 @@ const AddCustomerModal = ({ show, onClose, children }) => {
   );
 };
 
-export default AddCustomerModal;
+export default DataModal;

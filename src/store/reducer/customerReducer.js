@@ -1,22 +1,5 @@
 export const initialState = {
     customers: [],
-    tableColumn:[
-        { id: "id", label: "Id", numeric: true, disablePadding: true },
-        { id: "fullName", label: "Customer Name", numeric: false, disablePadding: false },
-        { id: "phoneNumber", label: "Phone Number", numeric: false, disablePadding: false },
-        { id: "vipType", label: "VIP Type", numeric: false, disablePadding: false },
-        { id: "balance", label: "Balance", numeric: true, disablePadding: false },
-        { id: "firstLanguage", label: "First Language", numeric: false, disablePadding: false },
-        { id: "comingResource", label: "Visit Resource", numeric: false, disablePadding: false },
-        { id: "birthday", label: "Birth Day", numeric: false, disablePadding: false,
-            renderCell: (params) => {
-                const date = new Date(params.value);
-                const formattedDate = date.toISOString().split('T')[0];
-                return formattedDate;
-            }
-        },
-        { id: "note", label: "note", numeric: false, disablePadding: false },
-    ],
     customer: {
         firstName: "",
         lastName: "",
@@ -31,7 +14,7 @@ export const initialState = {
     },
     showModal: false,
     loading:false,
-    error: null,
+    errors: null,
 };
 
 const customerReducer = (state, action) => {
@@ -49,7 +32,7 @@ const customerReducer = (state, action) => {
             return {
                 ...state,
                 loading: false,
-                error: payload
+                errors: payload
             };
         case "DELETE_CUSTOMER_OPTIMISTIC":
             return {
@@ -61,7 +44,7 @@ const customerReducer = (state, action) => {
             return {
                 ...state,
                 loading: false,
-                error: payload
+                errors: payload
             };
         //get single customer
         case "GET_CUSTOMER":
@@ -99,14 +82,14 @@ const customerReducer = (state, action) => {
             return {
                 ...state,
                 showModal: true,
-                error: null
+                errors: null
             };
         case "CLOSE_MODAL":
             console.log("OCLOSE_MODAL", payload);
             return {
                 ...state,
                 showModal: false,
-                error: null
+                errors: null
             };
         default:
             return state;
