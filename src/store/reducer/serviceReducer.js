@@ -31,27 +31,29 @@ const serviceReducer = (state, action) => {
                 loading:false,
                 services: payload
             }
-        case "GET_SERVICES_FAILURE":
+        case "GET_SERVICES_FAILURE",
+             "SUMBIT_SERVICE_FAILURE":
             return {
                 ...state,
                 loading:false,
                 errors: payload
             }
         case "OPEN_EDIT_SERVICE":
+            console.log("OPEN_EDIT_SERVICE", payload)
             return {
                 ...state,
                 service: payload.service,
                 showModal: true
             }
         case "OPEN_MODAL":
-            console.log("OPEN_MODAL", payload);
+            console.log("OPEN_MODAL");
             return {
                 ...state,
                 showModal: true,
                 errors: null
             };
         case "CLOSE_MODAL":
-            console.log("OCLOSE_MODAL", payload);
+            console.log("OCLOSE_MODAL");
             return {
                 ...state,
                 showModal: false,

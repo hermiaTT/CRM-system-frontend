@@ -4,13 +4,15 @@ import { Box } from '@mui/material';
 import ServiceTable from '../../components/ServiceTable';
 import { servicesTableColumn } from '../../data/data-header-info';
 import DataModal from '../../components/Modal';
+import Edit from './edit';
 
 const Services = () => {
-  const {services,service, getAllServices,showModal, dispatch} = useService();
+  const {services,showModal, service, dispatch, getAllServices} = useService();
   const tableColumn = servicesTableColumn;
   
   useEffect(()=>{
     getAllServices();
+    // console.log("check");
   },[])
 
   const onOpen = ()=>{
@@ -31,14 +33,16 @@ const Services = () => {
       <ServiceTable 
         columns={tableColumn} 
         rows={services}
-        onEdit={onEditService}/>
+        onEdit={onEditService}
+      />
 
       <DataModal
-        show = {showModal}
-        onClose = {onClose}
-        onSubmit = {onOpen}>
-          <div>{console.log(service)}</div>
-        </DataModal>
+          show ={showModal}
+          onClose={onClose}
+          onSubmit={onOpen}
+        >
+        <Edit/>
+      </DataModal>
     </Box>
   )
 }

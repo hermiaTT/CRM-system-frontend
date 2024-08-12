@@ -63,6 +63,15 @@ export const getAllServicessResponse = () =>{
         })
 }
 
+export const submitServiceResponse = (data) => {
+    return axios.post(servicesUrl, data).then((response)=>{       
+        return response;
+    }).catch((e)=>{
+        console.error(e);
+        return {errors: e.message};
+    })
+  
+}
 export default axios.create({
     baseURL: baseUrl,
     headers: headers,

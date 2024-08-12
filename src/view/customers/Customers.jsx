@@ -39,7 +39,8 @@ import Edit from './edit.jsx';
           onAdd = {onOpen}
           columns = {tableColumn}
           onDelete = {onDeleteCustomer}
-          onEdit = {onEditCustomer}/>
+          onEdit = {onEditCustomer}
+        />
 
         <DataModal
           show ={showModal}

@@ -23,6 +23,27 @@
 .MuiAutocomplete-root{
     width: 20%;
 }
+
+.customer-filter-autocomplete{
+    width: 100%;
+}
+/* Adjust the height of the Autocomplete input box */
+.customer-filter-autocomplete .MuiInputBase-root {
+    height: calc(1.5em + .75rem + 2px); /* This matches typical Bootstrap form control height */
+  }
+  
+  /* Adjust padding and font size to align with Bootstrap inputs */
+  .customer-filter-autocomplete .MuiInputBase-input {
+    padding: .375rem .75rem;
+    font-size: 1rem;
+  }
+  
+  /* If you need to adjust the label to align with Bootstrap inputs */
+  .customer-filter-autocomplete .MuiFormLabel-root {
+    font-size: 1rem;
+    top: -6px; /* Adjust as needed to align with Bootstrap labels */
+  }
+  
 .footer{
     position: absolute;
     bottom: 0;

@@ -1,8 +1,8 @@
 import React, { createContext, useContext, useReducer } from "react";
 import { initialState } from "../reducer/serviceReducer";
 import serviceReducer from "../reducer/serviceReducer";
-import { getAllServicessResponse } from "../../api";
-import { formateDate } from "../../util";
+import { getAllServicessResponse, submitServiceResponse } from "../../api";
+import { formatDateEpoch, formateDate } from "../../util";
 
 const ServiceContext = createContext(initialState);
 
@@ -25,10 +25,27 @@ export const ServiceProvider = ({children}) => {
         }
     }
 
+    const submitService = async(data)=> {
+        if(data.serviceDate){
+            data.serviceDate = formatDateEpoch(data.serviceDate);
+        }
+        const response = await submitServiceResponse(data);
+        if(response && response.data && response.status === 201){
+            getAllServices();
+            dispatch({ type: "CLOSE_MODAL"});
+        }else{
+            console.log(response.errors);
+            dispatch({ type: "SUMBIT_SERVICE_FAILURE", errors: response.errors});
+        }
+
+        
+        console.log(response);
+    }
     const contextValue = {
         ...state,
         dispatch,
-        getAllServices
+        getAllServices,
+        submitService
     }
 
     return (
